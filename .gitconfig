@@ -1,0 +1,13 @@
+[user]
+	name = Gabriel Moreira
+	email = gabrielmscampos@gmail.com
+	signingKey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH73WYLruc/3tXXNsquh+vy67dNEs9PHEnV+Re6PM184 gabrielmscampos@gmail.com
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = /home/gamoreir/.config/git/allowed_signers
+
