@@ -103,6 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Poetry
+export PATH="/home/gamoreir/.asdf/installs/poetry/1.7.1/bin:$PATH"
+
 # Git sign
 SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
