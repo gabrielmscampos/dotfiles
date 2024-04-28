@@ -124,3 +124,13 @@ if test -f "$THISROOT"; then
         source $THISROOT
 fi
 
+# Tunnel to CERN using sshuttle
+tunnel_to_cern () {
+	sshuttle --dns -vr lxtunnel 137.138.0.0/16 128.141.0.0/16 128.142.0.0/16 188.184.0.0/15 --python=python3
+}
+
+# Tunnel to CMS P5 using sshuttle
+tunnel_to_p5() {
+	sshuttle --dns -vr cmsusr 10.176.0.0/16 --python=python3
+}
+
