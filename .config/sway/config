@@ -1,0 +1,22 @@
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Terminal emulator
+set $term foot
+
+# Application launcher (using rofi-wayland)
+set $rofi_cmd rofi -terminal '$term' -show-icons
+set $menu $rofi_cmd -show drun
+
+# Wallpaper path
+set $wallpaper_path $HOME/Pictures/Wallpapers/534231.jpg
+
+# Extend configuration
+include '$(/usr/libexec/sway/layered-include "$HOME/.config/sway/config.d/*.conf")'
+
