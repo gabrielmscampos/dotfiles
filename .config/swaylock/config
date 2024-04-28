@@ -1,3 +1,20 @@
 image=$HOME/Pictures/Wallpapers//534231.jpg
 scaling=fill
+clock
+indicator
+indicator-radius=100
+indicator-thickness=7
+indicator-caps-lock
+effect-scale=0.4
+effect-blur=5x2
+effect-vignette=0.3:0.5
+ring-color=777696
+key-hl-color=880033
+line-color=00000000
+inside-color=00000088
+separator-color=00000000
+fade-in=0.2
+font=Noto Sans
+timestr=%T
+datestr=%a, %d %b
 
