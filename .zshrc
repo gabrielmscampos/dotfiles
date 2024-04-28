@@ -117,3 +117,10 @@ if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
     ssh-add ~/.ssh/id_ed25519 2>/dev/null
 fi
 
+# ROOT
+CURR_PYVERSION=$(python -c 'import sys; print("".join(str(n) for n in sys.version_info[:2]))')
+THISROOT=/opt/ROOT-python${CURR_PYVERSION}/bin/thisroot.sh
+if test -f "$THISROOT"; then
+        source $THISROOT
+fi
+
