@@ -44,5 +44,5 @@
   "logLevel": "info",
   "alwaysClose": true,
   "autoCheckForUpdates": true,
-  "alwaysMinimize": false
+  "alwaysMinimize": true
 }
