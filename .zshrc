@@ -16,6 +16,11 @@ export EDITOR='vim'
 # Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Stop foot terminal confusing ssh
+if [[ $TERM = "foot" ]]; then
+    alias ssh='TERM=linux ssh'
+fi
+
 # Poetry
 export PATH="/home/gamoreir/.asdf/installs/poetry/1.7.1/bin:$PATH"
 
