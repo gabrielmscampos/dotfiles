@@ -22,7 +22,7 @@ if [[ $TERM = "foot" ]]; then
 fi
 
 # Poetry
-export PATH="/home/gamoreir/.asdf/installs/poetry/1.7.1/bin:$PATH"
+export PATH="$HOME/.asdf/installs/poetry/1.7.1/bin:$PATH"
 
 # Git sign
 SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -50,4 +50,10 @@ tunnel_to_cern () {
 tunnel_to_p5() {
     sshuttle --python=python3 --dns -v -r cmsusr 10.176.0.0/16
 }
+
+# If using AMD GPU gfx1031, we need to override GFX to pretend gfx1030
+if command -v rocminfo &> /dev/null && rocminfo | grep -q "gfx1031";
+then 
+    export HSA_OVERRIDE_GFX_VERSION=10.3.0
+fi
 
