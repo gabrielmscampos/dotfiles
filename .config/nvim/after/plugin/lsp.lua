@@ -20,5 +20,23 @@ require('mason-lspconfig').setup({
     function(server_name)
       require('lspconfig')[server_name].setup({})
     end,
+
+    -- pyright configuration
+    pyright = function()
+        require('lspconfig').pyright.setup({
+            settings = {
+                pyright = {
+                    disableOrganizeImports = true, -- Using Ruff
+                },
+                python = {
+                    analysis = {
+                        ignore = { '*' }, -- Using Ruff
+                        typeCheckingMode = 'off', -- Using mypy
+                    },
+                },
+            },
+        })
+    end,
+
   },
 })
