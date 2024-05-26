@@ -54,11 +54,26 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  use 'nvim-tree/nvim-web-devicons'
+
   use({
       'prichrd/netrw.nvim',
       requires = {
           {'nvim-tree/nvim-web-devicons'},
       },
   })
+
+  use({
+      'lewis6991/gitsigns.nvim',
+      tag = 'v0.8.1'
+  })
+
+  use {
+      'nvim-lualine/lualine.nvim',
+      requires = {
+          'nvim-tree/nvim-web-devicons',
+          opt = true
+      }
+  }
 
 end)
