@@ -12,6 +12,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {
 	'pyright',
 	'ruff_lsp',
+    'tsserver',
 	'eslint',
 	'rust_analyzer',
 	'lua_ls',
