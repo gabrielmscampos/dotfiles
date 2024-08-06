@@ -15,7 +15,7 @@ set $rofi_cmd rofi -terminal '$term' -show-icons
 set $menu $rofi_cmd -show drun
 
 # Wallpaper path
-set $wallpaper_path $HOME/Pictures/Wallpapers/534231.jpg
+set $wallpaper_path $HOME/Pictures/Wallpapers/2880/mojave-dark.jpg
 
 # Extend configuration
 include '$(/usr/libexec/sway/layered-include "$HOME/.config/sway/config.d/*.conf")'
