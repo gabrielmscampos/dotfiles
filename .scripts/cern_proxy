@@ -1,0 +1,41 @@
+#!/bin/sh
+
+case $1 in
+    cern)
+        case $2 in
+            connect)
+                sshuttle --python=python3 --dns --daemon --pidfile /tmp/sshuttle-cern.pid -vr lxtunnel \
+                    137.138.0.0/16 \
+                    128.141.0.0/16 \
+                    128.142.0.0/16 \
+                    188.184.0.0/15
+                shift
+            ;;
+            disconnect)
+                kill `cat /tmp/sshuttle-cern.pid`
+                shift
+            ;;
+            *)
+                echo "Unknown option"
+            ;;
+        esac
+    ;;
+    p5)
+        case $2 in
+            connect)
+                sshuttle --python=python3 --dns --daemon --pidfile /tmp/sshuttle-p5.pid -vr cmsusr 10.176.0.0/16
+                shift
+            ;;
+            disconnect)
+                kill `cat /tmp/sshuttle-p5.pid`
+                shift
+            ;;
+            *)
+                echo "Unknown option"
+            ;;
+        esac
+    ;;
+    *)
+        echo "Unknown target"
+    ;;
+esac

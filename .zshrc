@@ -50,3 +50,5 @@ fi
 # Remap vim to nvim
 alias vim='nvim'
 
+# Load scripts
+export PATH="$HOME/.scripts:$PATH"

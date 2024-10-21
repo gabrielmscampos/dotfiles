@@ -1,0 +1,7 @@
+#!/bin/sh
+# Thanks to https://unix.stackexchange.com/a/546072
+
+while ps -p $1 --no-headers --format "etime pid %cpu %mem rss"; do
+   sleep 1
+done
+
