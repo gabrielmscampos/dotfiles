@@ -10,12 +10,12 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-	'pyright',
-	'ruff_lsp',
-    'tsserver',
-	'eslint',
-	'rust_analyzer',
-	'lua_ls',
+    'basedpyright',
+    'ruff',
+    'eslint',
+    'ts_ls',
+    'rust_analyzer',
+    'lua_ls',
   },
   handlers = {
     function(server_name)
@@ -23,18 +23,16 @@ require('mason-lspconfig').setup({
     end,
 
     -- pyright configuration
-    pyright = function()
-        require('lspconfig').pyright.setup({
+    basedpyright = function()
+        require('lspconfig').basedpyright.setup({
             settings = {
-                pyright = {
-                    disableOrganizeImports = true, -- Using Ruff
-                },
-                python = {
+                disableOrganizeImports = true,
+                basedpyright = {
                     analysis = {
-                        ignore = { '*' }, -- Using Ruff
-                        typeCheckingMode = 'off', -- Using mypy
-                    },
-                },
+                        typeCheckingMode = 'standard',
+                        diagnosticMode = 'openFilesOnly'
+                    }
+                }
             },
         })
     end,
