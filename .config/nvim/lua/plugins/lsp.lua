@@ -13,7 +13,7 @@ return {
 
     config = function()
         local lspconfig_defaults = require("lspconfig").util.default_config
-        local cmp = require('cmp')
+        local cmp = require("cmp")
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",
@@ -22,35 +22,35 @@ return {
         )
 
         -- Autocmd for LSP keymaps
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('lsp_key_mappings', { clear = true }),
-            desc = 'LSP actions',
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("lsp_key_mappings", { clear = true }),
+            desc = "LSP actions",
             callback = function(event)
-                local opts = {buffer = event.buf}
+                local opts = { buffer = event.buf }
 
-                vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-                vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-                vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-                vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-                vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-                vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-                vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-                vim.keymap.set("n", "<leader>r", '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-                vim.keymap.set("n", '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-                vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+                vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+                vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+                vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+                vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+                vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+                vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+                vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+                vim.keymap.set("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+                vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+                vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
             end,
         })
 
         -- Autocmd to disable hover for Ruff
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
-            desc = 'LSP: Disable hover capability from Ruff',
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+            desc = "LSP: Disable hover capability from Ruff",
             callback = function(args)
                 local client = vim.lsp.get_client_by_id(args.data.client_id)
                 if client == nil then
                     return
                 end
-                if client.name == 'ruff' then
+                if client.name == "ruff" then
                     -- Disable hover in favor of Pyright
                     client.server_capabilities.hoverProvider = false
                 end
@@ -89,7 +89,7 @@ return {
                 end,
 
                 basedpyright = function()
-                    require('lspconfig').basedpyright.setup({
+                    require("lspconfig").basedpyright.setup({
                         settings = {
                             disableOrganizeImports = true, -- using Ruff
                             basedpyright = {
@@ -113,11 +113,11 @@ return {
                 end,
 
                 ruff = function()
-                    require('lspconfig').ruff.setup {
-                        trace = 'messages',
+                    require("lspconfig").ruff.setup {
+                        trace = "messages",
                         init_options = {
                             settings = {
-                                logLevel = 'debug',
+                                logLevel = "debug",
                             }
                         }
                     }
@@ -129,36 +129,36 @@ return {
 
         cmp.setup({
             mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
+                ["<C-y>"] = cmp.mapping.confirm({ select = true }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'buffer' }, -- text within current buffer
-                { name = 'path' }, -- file system paths
+                { name = "nvim_lsp" },
+                { name = "buffer" }, -- text within current buffer
+                { name = "path" },   -- file system paths
             })
         })
 
         -- `/` cmdline setup.
-        cmp.setup.cmdline('/', {
+        cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = {
-                { name = 'buffer' }
+                { name = "buffer" }
             }
         })
 
         -- `:` cmdline setup.
-        cmp.setup.cmdline(':', {
+        cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
-                { name = 'path' }
+                { name = "path" }
             }, {
                 {
-                    name = 'cmdline',
+                    name = "cmdline",
                     option = {
-                        ignore_cmds = { 'Man', '!' }
+                        ignore_cmds = { "Man", "!" }
                     }
                 }
             })
