@@ -43,12 +43,25 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
+                -- Bash
+                "bashls",
+                -- Python
                 "basedpyright",
                 "ruff",
+                -- JavaScript, TypeScript, JSON, HTML, CSS
                 "eslint",
                 "ts_ls",
+                "jsonls",
+                "cssls",
+                "html",
+                -- Rust
                 "rust_analyzer",
-                "lua_ls"
+                -- Lua
+                "lua_ls",
+                -- Golang
+                "gopls",
+                -- C/C++
+                "clangd"
             },
             handlers = {
                 function(server_name) -- default handler (optional)
