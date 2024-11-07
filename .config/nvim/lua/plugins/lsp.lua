@@ -21,7 +21,9 @@ return {
             cmp_lsp.default_capabilities()
         )
 
+        -- Autocmd for LSP keymaps
         vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('lsp_key_mappings', { clear = true }),
             desc = 'LSP actions',
             callback = function(event)
                 local opts = {buffer = event.buf}
@@ -35,7 +37,23 @@ return {
                 vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
                 vim.keymap.set("n", "<leader>r", '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
                 vim.keymap.set("n", '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-                vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+                vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+            end,
+        })
+
+        -- Autocmd to disable hover for Ruff
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+            desc = 'LSP: Disable hover capability from Ruff',
+            callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
+                if client == nil then
+                    return
+                end
+                if client.name == 'ruff' then
+                    -- Disable hover in favor of Pyright
+                    client.server_capabilities.hoverProvider = false
+                end
             end,
         })
 
@@ -76,7 +94,9 @@ return {
                             disableOrganizeImports = true, -- using Ruff
                             basedpyright = {
                                 analysis = {
-                                    typeCheckingMode = "off", -- using Ruff
+                                    -- Ignore all files for analysis to exclusively use Ruff for linting
+                                    ignore = { "*" },
+                                    typeCheckingMode = "off",
                                     autoSearchPaths = true,
                                     useLibraryCodeForTypes = true,
                                     autoImportCompletions = true,
@@ -91,6 +111,17 @@ return {
                         },
                     })
                 end,
+
+                ruff = function()
+                    require('lspconfig').ruff.setup {
+                        trace = 'messages',
+                        init_options = {
+                            settings = {
+                                logLevel = 'debug',
+                            }
+                        }
+                    }
+                end
             }
         })
 
