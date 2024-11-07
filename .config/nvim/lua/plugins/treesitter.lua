@@ -4,7 +4,22 @@ return {
     config = function()
         local opts = {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
-            ensure_installed = { "c", "lua", "rust", "javascript", "typescript", "python", "go", "bash" },
+            ensure_installed = {
+                "c",
+                "lua",
+                "rust",
+                "javascript",
+                "typescript",
+                "html",
+                "json",
+                "python",
+                "go",
+                "bash",
+                "markdown",
+                "markdown_inline",
+                "regex",
+                "yaml"
+            },
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
             -- Automatically install missing parsers when entering buffer
