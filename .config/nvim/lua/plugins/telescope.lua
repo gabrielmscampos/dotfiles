@@ -15,7 +15,7 @@ return {
             { desc = "Telescope: grep for any string" })
 
         -- vim pickers
-        vim.keymap.set("n", "<leader>fb", builtin.grep_string, { desc = "Telescope: open buffers" })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope: open buffers" })
 
         -- neovim lsp pickers
         vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Telescope: lsp references" })
