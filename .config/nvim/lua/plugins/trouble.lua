@@ -6,32 +6,32 @@ return {
         {
             "<leader>xx",
             "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Diagnostics (Trouble)",
+            desc = "Trouble: diagnostics toggle",
         },
         {
             "<leader>xX",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-            desc = "Buffer Diagnostics (Trouble)",
+            desc = "Trouble: buffer diagnostics",
         },
         {
             "<leader>cs",
             "<cmd>Trouble symbols toggle focus=false<cr>",
-            desc = "Symbols (Trouble)",
+            desc = "Trouble: symbols toggle",
         },
         {
             "<leader>cl",
             "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-            desc = "LSP Definitions / references / ... (Trouble)",
+            desc = "Trouble: LSP definitions / references / ...",
         },
         {
             "<leader>xL",
             "<cmd>Trouble loclist toggle<cr>",
-            desc = "Location List (Trouble)",
+            desc = "Trouble: location list",
         },
         {
             "<leader>xQ",
             "<cmd>Trouble qflist toggle<cr>",
-            desc = "Quickfix List (Trouble)",
+            desc = "Trouble: quickfix list",
         },
     },
 }

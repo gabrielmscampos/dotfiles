@@ -33,6 +33,7 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<leader>ct", function() require("cloak").toggle() end)
+        local toggle = function() require("clock").toggle() end
+        vim.keymap.set("n", "<leader>ct", toggle, { desc = "Cloak: toggle" })
     end
 }
