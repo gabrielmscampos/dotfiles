@@ -129,7 +129,7 @@ return {
                 noremap = true,
                 silent = true,
                 nowait = true,
-                desc = "GPT prompt " .. desc,
+                desc = "GP: " .. desc,
             }
         end
 
