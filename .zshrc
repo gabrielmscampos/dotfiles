@@ -24,16 +24,6 @@ fi
 # Poetry
 export PATH="$HOME/.asdf/installs/poetry/1.7.1/bin:$PATH"
 
-# Git sign
-SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-    ssh-add ~/.ssh/id_ed25519 2>/dev/null
-fi
-
 # ROOT
 CURR_PYVERSION=$(python -c 'import sys; print("".join(str(n) for n in sys.version_info[:2]))')
 THISROOT=/opt/ROOT-python${CURR_PYVERSION}/bin/thisroot.sh
