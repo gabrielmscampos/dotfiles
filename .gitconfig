@@ -1,7 +1,7 @@
 [user]
     name = Gabriel Moreira
     email = gabrielmscampos@gmail.com
-    signingKey = ~/.ssh/id_ed25519.pub
+    signingKey = ~/.ssh/id_ed25519_sk.pub
 [includeIf "gitdir:~/Documents/Cern/gitlab/"]
     path = ~/.gitconfig-cern-gitlab
 [gpg]
