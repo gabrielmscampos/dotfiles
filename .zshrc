@@ -21,6 +21,9 @@ if [[ $TERM = "foot" ]]; then
     alias ssh='TERM=linux ssh'
 fi
 
+# asdf 0.16+
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 # Poetry
 export PATH="$HOME/.asdf/installs/poetry/1.7.1/bin:$PATH"
 
