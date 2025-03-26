@@ -13,7 +13,6 @@ key-hl-color=880033
 line-color=00000000
 inside-color=00000088
 separator-color=00000000
-fade-in=0.2
 font=Noto Sans
 timestr=%T
 datestr=%a, %d %b
