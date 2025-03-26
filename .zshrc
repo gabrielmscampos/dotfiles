@@ -28,10 +28,11 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export PATH="$HOME/.asdf/installs/poetry/1.7.1/bin:$PATH"
 
 # ROOT
-CURR_PYVERSION=$(python -c 'import sys; print("".join(str(n) for n in sys.version_info[:2]))')
-THISROOT=/opt/ROOT-python${CURR_PYVERSION}/bin/thisroot.sh
-if test -f "$THISROOT"; then
-        source $THISROOT
+curr_asdf_py_ver=$(asdf current python | awk 'NR==2 {print $2}' | sed 's/^ *//' | cut -d. -f1,2 | tr -d '.')
+curr_asdf_root_ver=$(asdf current root-python${curr_asdf_py_ver} | awk 'NR==2 {print $2}' | sed 's/^ *//')
+thisroot="$HOME/.asdf/installs/root-python${curr_asdf_py_ver}/${curr_asdf_root_ver}/bin/thisroot.sh"
+if test -f "$thisroot"; then
+    source $thisroot
 fi
 
 # If using AMD GPU gfx1031, we need to override GFX to pretend gfx1030
