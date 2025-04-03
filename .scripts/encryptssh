@@ -1,0 +1,52 @@
+#!/bin/bash
+
+usage() {
+    echo "Options:"
+    echo "  -f <filename>          : Specify the filename to be encoded/decoded."
+    echo "  -k <ssh-private-key>   : Specify the filename to be encoded/decoded."
+    echo "  -h                     : Print this message."
+    exit 1
+}
+
+# Parse command line options
+while getopts ":f:k:h" opt; do
+    case $opt in
+        f)
+            filename="$OPTARG"
+            ;;
+        k)
+            key_file="$OPTARG"
+            ;;
+        h)
+            usage
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            usage
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            usage
+            ;;
+    esac
+done
+
+# Check if filename and key_file were provided
+if [ -z "$filename" ] || [ -z "$key_file" ]; then
+    echo "Error: Missing or invalid options."
+    usage
+fi
+
+# Check if the file exists
+if [ ! -f "$filename" ]; then
+    echo "File $filename not found."
+    exit 1
+fi
+
+# Check if key file exists
+if [ ! -f "$key_file" ]; then
+    echo "File $key_file not found."
+    exit 1
+fi
+
+openssl aes-256-cbc -pbkdf2 -iter 1000000 -in "$filename" -out "$filename.encrypted" -pass file:"$key_file"
