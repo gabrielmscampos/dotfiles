@@ -1,0 +1,13 @@
+#!/bin/bash
+
+length=$1
+
+# Check if length is not provided or less than 4
+if [[ -z "$length" || "$length" -lt 4 ]]; then
+    echo "Usage: $0 <length> (length must be at least 4)"
+    exit 1
+fi
+
+pin=$(LC_ALL=C tr -dc '0-9' < /dev/urandom | fold -w${length} | head -1)
+
+echo "Generated pin: $pin"
