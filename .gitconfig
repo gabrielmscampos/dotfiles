@@ -1,15 +1,11 @@
 [user]
     name = Gabriel Moreira
     email = gabrielmscampos@gmail.com
-    signingKey = ~/.ssh/id_ed25519_sk.pub
+    signingKey = 81E700A410250436
 [includeIf "gitdir:~/Documents/Cern/gitlab/"]
     path = ~/.gitconfig-cern-gitlab
-[gpg]
-    format = ssh
 [commit]
     gpgsign = true
 [tag]
     gpgsign = true
-[gpg "ssh"]
-    allowedSignersFile = ~/.config/git/allowed_signers
 
