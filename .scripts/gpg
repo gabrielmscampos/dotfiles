@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Thanks to: https://www.kobelnet.ch/2024/12/18/token2-gnupg-on-arch-linux
+
+/usr/bin/gpg --card-status &> /dev/null
+if [ $? != 0 ]
+then
+    gpgconf --kill scdaemon
+fi
+
+# Start the real gpg
+/usr/bin/gpg "$@" <&0
