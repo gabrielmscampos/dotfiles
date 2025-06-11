@@ -1,4 +1,4 @@
-image=$HOME/Pictures/Wallpapers/2880/mojave-dark.jpg
+image=/usr/share/backgrounds/default.jxl
 scaling=fill
 clock
 indicator
