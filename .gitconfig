@@ -2,7 +2,7 @@
     name = Gabriel Moreira
     email = gabrielmscampos@gmail.com
     signingKey = 81E700A410250436
-[includeIf "gitdir:~/Documents/Cern/gitlab/"]
+[includeIf "gitdir:~/Cern/gitlab/"]
     path = ~/.gitconfig-cern-gitlab
 [commit]
     gpgsign = true
