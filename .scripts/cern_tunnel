@@ -1,0 +1,26 @@
+#!/bin/sh
+
+case $1 in
+    connect)
+        sshuttle \
+            --python=python3 \
+            --dns \
+            --daemon \
+            --pidfile /tmp/sshuttle-cern.pid \
+            -vr lxtunnel \
+                137.138.0.0/16 \
+                128.141.0.0/16 \
+                128.142.0.0/16 \
+                188.184.0.0/15
+        shift
+    ;;
+    disconnect)
+        kill `cat /tmp/sshuttle-cern.pid`
+        shift
+    ;;
+    *)
+        echo  "Unknown option\nUsage:"
+        echo  "\t $0 connect : to start VPN-like connection to CERN"
+        echo  "\t $0 disconnect : to stop it"
+    ;;
+esac
