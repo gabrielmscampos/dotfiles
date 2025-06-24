@@ -6,9 +6,13 @@ return {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
             ensure_installed = {
                 "c",
+                "c_sharp",
+                "css",
+                "diff",
                 "lua",
                 "rust",
                 "javascript",
+                "jsdoc",
                 "typescript",
                 "html",
                 "json",
@@ -18,7 +22,11 @@ return {
                 "markdown",
                 "markdown_inline",
                 "regex",
-                "yaml"
+                "yaml",
+                "perl",
+                "tsx",
+                "vim",
+                "vimdoc",
             },
             -- Install parsers synchronously (only applied to `ensure_installed`)
             sync_install = false,
