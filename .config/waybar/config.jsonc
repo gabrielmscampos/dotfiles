@@ -18,6 +18,9 @@
         "cpu",
         "memory",
         "temperature",
+        "custom/nvidia-utilization",
+        "custom/nvidia-memory-usage",
+        "custom/nvidia-temp",
         "backlight",
         "sway/language",
         "battery",
@@ -150,5 +153,23 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/nvidia-utilization": {
+        "exec": "~/.config/waybar/scripts/nvidia_utilization.sh",
+        "interval": 5,
+        "return-type": "json",
+        "format": "{}"
+    },
+    "custom/nvidia-temp": {
+        "exec": "~/.config/waybar/scripts/nvidia_temp.sh",
+        "interval": 5,
+        "return-type": "json",
+        "format": "{}"
+    },
+    "custom/nvidia-memory-usage": {
+        "exec": "~/.config/waybar/scripts/nvidia_memory.sh",
+        "interval": 5,
+        "return-type": "json",
+        "format": "{}"
     }
 }
