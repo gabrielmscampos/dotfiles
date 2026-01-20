@@ -21,6 +21,11 @@ if [[ $TERM = "foot" ]]; then
     alias ssh='TERM=linux ssh'
 fi
 
+# Stop kitty terminal confusing ssh
+if [[ $TERM = "xterm-kitty" ]]; then
+    alias ssh='TERM=linux ssh'
+fi
+
 # asdf 0.16+
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
@@ -34,6 +39,9 @@ thisroot="$HOME/.asdf/installs/root-python${curr_asdf_py_ver}/${curr_asdf_root_v
 if test -f "$thisroot"; then
     source $thisroot
 fi
+
+# Java HOME
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # If using AMD GPU gfx1031, we need to override GFX to pretend gfx1030
 if command -v rocminfo &> /dev/null && rocminfo | grep -q "gfx1031";
