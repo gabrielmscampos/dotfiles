@@ -20,3 +20,8 @@ set $wallpaper_path /usr/share/backgrounds/default.jxl
 # Extend configuration
 include '$(/usr/libexec/sway/layered-include "$HOME/.config/sway/config.d/*.conf")'
 
+# Theme
+exec_always {
+    export GTK_THEME=Nordic
+}
+
