@@ -8,19 +8,28 @@ case $1 in
             --daemon \
             --pidfile /tmp/sshuttle-cern.pid \
             -vr lxtunnel \
-                137.138.0.0/16 \
                 128.141.0.0/16 \
                 128.142.0.0/16 \
-                188.184.0.0/15
+                137.138.0.0/16 \
+                188.184.0.0/15 \
+                194.12.128.0/18 \
+                2001:1458::/32 \
+                2001:1459::/32
         shift
     ;;
     disconnect)
         kill `cat /tmp/sshuttle-cern.pid`
         shift
     ;;
+    status)
+        echo "IP address as seen by CERN servers:   " `wget -O - -q "https://security.web.cern.ch/ip.php"`
+        echo "IP address as seen by external sites: " `wget -O - -q "https://api.my-ip.io/ip"`
+        shift
+    ;;
     *)
         echo  "Unknown option\nUsage:"
         echo  "\t $0 connect : to start VPN-like connection to CERN"
         echo  "\t $0 disconnect : to stop it"
+        echo  "\t $0 status : to check which IP CERN and non-CERN servers are seeing"
     ;;
 esac
